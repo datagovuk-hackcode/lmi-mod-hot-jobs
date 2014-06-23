@@ -1,3 +1,9 @@
+<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAByI8rW3Qm5F3zv1gXHjnDV8PRnkUn2HA&libraries=visualization">
 <h1>This is the results page it gets passed groups of jobs by location</h1>
-<%= @results %>
-<p>Find me in app/views/main/results.html.erb</p>
+
+<script>
+window.results = <%= raw @results.to_json %>
+</script>
+<table id="display"></table>
+<div id="map-canvas"></div>
