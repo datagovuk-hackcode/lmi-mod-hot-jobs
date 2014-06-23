@@ -7,9 +7,19 @@
 
   <% if @distance %>
     <h3>
-      Approx distance to your selected living area: <%= @distance %><br>
-      It would cost you roughly : <%= number_to_currency( ((@distance[0..-4].to_f) * 0.24), unit: '£') %>
+      Your journey to work would be approximately <%= @distance %><br>
+      If you drove that distance it would be roughly <%= number_to_currency( ((@distance[0..-4].to_f) * 0.24), unit: '£') %>.
     </h3>
+    <script>
+      window.location_from = {
+        lat: <%= @location_from_origin.lat %>,
+        lng: <%= @location_from_origin.lng %>
+      }
+      window.location_to = {
+        lat: <%= @location_to_origin.lat %>,
+        lng: <%= @location_to_origin.lng %>
+      }
+    </script>
   <% end %>
   <script>
   window.results = <%= raw @results.to_json %>

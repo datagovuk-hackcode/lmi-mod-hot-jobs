@@ -138,7 +138,16 @@ class App
     @map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions)
     @initialize()
+    @draw_line()
 
+  draw_line: =>
+    if window.location_to
+      lines = [
+        new google.maps.LatLng(location_to.lat, location_to.lng),
+        new google.maps.LatLng(location_from.lat, location_from.lng)
+      ]
+      poly = new google.maps.Polyline({ map: @map, path: lines, strokeColor: '#4986E7' })
+      poly.setMap(@map)
   add_point: (lat, lon)=>
     @map_points.push new google.maps.LatLng(lat, lon)
 
