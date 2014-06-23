@@ -8,8 +8,8 @@ class Job < ActiveRecord::Base
 
   def self.populate_job_geodata
 
-    #keywords = ["football", "catering", "teaching", "music", "x-factor", "x factor", "catering", "chef"]
-    keywords = ["football"]
+    keywords = ["football", "catering", "teaching", "music", "x-factor", "x factor", "catering", "chef"]
+    #keywords = ["football"]
 
     keywords.each do |keyword|
 
@@ -20,10 +20,17 @@ class Job < ActiveRecord::Base
         unless self.where('lmi_vacancy_id = ?', job["id"]).any?
           new_job = self.new
           new_job.keyword = keyword
-          geo = self.geocode(job["location"]["postcode"])
+          
+          geo = self.geocode("#{job["location"]["postcode"]}, UK")
+          
           new_job.title = job["title"]
           new_job.lmi_vacancy_id = job["id"]
           new_job.description = job["summary"]
+          puts
+          puts
+          puts geo
+          puts
+          puts
           new_job.lng = geo.lng
           new_job.lat = geo.lat
 
