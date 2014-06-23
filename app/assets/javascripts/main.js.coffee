@@ -174,8 +174,10 @@ class App
   changeOpacity: ->
     @heatmap.set('opacity', @heatmap.get('opacity') ? null : 0.2)
 
-$ ->
+ready = ->
   if $('#display')[0]
     window.app = new App()
   else
-    nlform = new NLForm document.getElementById 'nl-form'
+    #nlform = new NLForm document.getElementById 'nl-form'
+$(document).ready(ready)
+$(document).on('page:load', ready)

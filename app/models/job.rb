@@ -8,7 +8,7 @@ class Job < ActiveRecord::Base
 
   def self.populate_job_geodata
 
-    keywords = ["football", "catering", "teaching", "music", "x-factor", "x%20factor", "catering", "chef"]
+    keywords = ["football", "catering", "teaching", "music", "x-factor", "x%20factor", "chef", "engineer", "factory", "marketing", "media", "customer%20service", "banking", "farm", "farming"]
     #keywords = ["football"]
 
     keywords.each do |keyword|
@@ -37,7 +37,7 @@ class Job < ActiveRecord::Base
 
             puts "Job saved successfully" if new_job.save
             puts Job.count
-            sleep 2
+            sleep 1
           end
         else
           puts 'This job already exists in the DB.'
