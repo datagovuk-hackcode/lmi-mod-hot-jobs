@@ -1,6 +1,6 @@
 <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAByI8rW3Qm5F3zv1gXHjnDV8PRnkUn2HA&libraries=visualization"></script>
-<h1>This is the results page it gets passed groups of jobs by location</h1>
+<h1><%= @location %>This is the results page it gets passed groups of jobs by location</h1>
 
 <script>
 window.results = <%= raw @results.to_json %>
