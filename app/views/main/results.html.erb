@@ -13,7 +13,7 @@
   <script>
   window.results = <%= raw @results.to_json %>
   </script>
-  <table id="display"></table>
+  <p>The map below shows the density for job vancancies listed for <%= @keyword %>.</p>
   <div id="map-canvas"></div>
 <% else %>
   <h1>
