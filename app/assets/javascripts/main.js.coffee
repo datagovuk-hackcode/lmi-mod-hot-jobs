@@ -5,9 +5,10 @@
 class App
   constructor: ->
     @first_lat_lon = {}
+    @map_points = []
     for key, points of window.results
-      @first_lat_lon = { lat: point["lat"], lon: point["lon"]  } if @first_lat_lon = {}
-      @add_point(point["lat"], point["lon"]) for point in points
+      @first_lat_lon = { lat: points[0].lat, lon: points[0].lng  } if @first_lat_lon = {}
+      @add_point(point.lat, point.lng) for point in points
     mapOptions = {
       zoom: 13,
       center: new google.maps.LatLng(@first_lat_lon.lat, @first_lat_lon.lon),
@@ -15,13 +16,13 @@ class App
     }
     @map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions)
-    @map_points = []
     @initialize()
 
   add_point: (lat, lon)=>
     @map_points.push new google.maps.LatLng(lat, lon)
 
   initialize: =>
+    console.log @map_points
     @heatmap = new google.maps.visualization.HeatmapLayer({
       data: new google.maps.MVCArray(@map_points)
     })
