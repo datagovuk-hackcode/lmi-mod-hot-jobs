@@ -17,11 +17,13 @@ ActiveRecord::Schema.define(version: 20140623101442) do
   enable_extension "plpgsql"
 
   create_table "jobs", force: true do |t|
-    t.string   "lat"
-    t.string   "lon"
-    t.string   "location"
-    t.string   "title"
-    t.string   "description"
+    t.float    "lat"
+    t.float    "lng"
+    t.text     "location"
+    t.text     "title"
+    t.integer  "lmi_vacancy_id"
+    t.text     "description"
+    t.text     "keyword"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

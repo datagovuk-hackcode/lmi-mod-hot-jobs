@@ -27,7 +27,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem "geocoder"
+gem "geokit-rails"
 gem 'pg'
 gem 'httparty'
 gem 'd3js-rails', '~> 3.1.6'
