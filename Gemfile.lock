@@ -40,6 +40,9 @@ GEM
     execjs (2.2.0)
     geocoder (1.2.2)
     hike (1.2.3)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.9)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
@@ -54,6 +57,8 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.10.1)
+    multi_xml (0.5.5)
+    pg (0.17.1)
     polyglot (0.3.5)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -113,8 +118,10 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   d3js-rails (~> 3.1.6)
   geocoder
+  httparty
   jbuilder (~> 1.2)
   jquery-rails
+  pg
   rails (= 4.0.2)
   sass-rails (~> 4.0.0)
   sdoc
