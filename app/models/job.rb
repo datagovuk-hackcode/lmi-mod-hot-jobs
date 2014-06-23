@@ -8,7 +8,7 @@ class Job < ActiveRecord::Base
 
   def self.populate_job_geodata
 
-    keywords = ["football", "catering", "teaching", "music", "x-factor", "x factor", "catering", "chef"]
+    keywords = ["football", "catering", "teaching", "music", "x-factor", "x%20factor", "catering", "chef"]
     #keywords = ["football"]
 
     keywords.each do |keyword|
