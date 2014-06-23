@@ -143,7 +143,6 @@ class App
     @map_points.push new google.maps.LatLng(lat, lon)
 
   initialize: =>
-    console.log @map_points
     @heatmap = new google.maps.visualization.HeatmapLayer({
       data: new google.maps.MVCArray(@map_points)
     })
@@ -175,9 +174,9 @@ class App
     @heatmap.set('opacity', @heatmap.get('opacity') ? null : 0.2)
 
 ready = ->
-  if $('#display')[0]
+  if $('#map-canvas')[0]
     window.app = new App()
-  else
-    #nlform = new NLForm document.getElementById 'nl-form'
+  if $('#nl-form')[0]
+    nlform = new NLForm document.getElementById 'nl-form'
 $(document).ready(ready)
 $(document).on('page:load', ready)
