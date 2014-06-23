@@ -55,3 +55,5 @@ class App
 $ ->
   if $('#display')[0]
     window.app = new App()
+  else
+    nlform = new NLForm document.getElementById 'nl-form'
