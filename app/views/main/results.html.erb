@@ -2,7 +2,7 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAByI8rW3Qm5F3zv1gXHjnDV8PRnkUn2HA&libraries=visualization"></script>
 <% if @results.size > 0 %>
   <h1>
-    Where are those jobs most needed at the moment?
+    Where are <%= @keyword %> jobs most needed at the moment?
   </h1>
 
   <% if @distance %>
