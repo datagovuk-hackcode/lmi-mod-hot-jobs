@@ -1,9 +1,26 @@
 <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAByI8rW3Qm5F3zv1gXHjnDV8PRnkUn2HA&libraries=visualization"></script>
-<h1>This is the results page it gets passed groups of jobs by location</h1>
+<% if @results.size > 0 %>
+  <h1>
+    Where are those jobs most needed at the moment?
+  </h1>
 
-<script>
-window.results = <%= raw @results.to_json %>
-</script>
-<table id="display"></table>
-<div id="map-canvas"></div>
+  <%= @location_from_origin %>
+  <br>
+  <%= @location_to_origin %>
+  <!-- http://maps.googleapis.com/maps/api/distancematrix/output?origins=&destinations= -->
+
+  <script>
+  window.results = <%= raw @results.to_json %>
+  </script>
+  <table id="display"></table>
+  <div id="map-canvas"></div>
+<% else %>
+  <h1>
+    Sorry, there aren't any vacancies listed in that area. 
+  </h1>
+  <h2>
+    <% random_keyword = ["football", "catering", "teaching", "music", "catering", "chef"].sample %>
+    Have you thought of a career in <a href="/results?keyword=<%= random_keyword%>"><%= random_keyword%>?</a>
+  </h2>
+<% end %>
