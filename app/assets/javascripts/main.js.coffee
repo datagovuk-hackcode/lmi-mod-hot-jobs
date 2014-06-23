@@ -10,7 +10,7 @@ class App
       @first_lat_lon = { lat: points[0].lat, lon: points[0].lng  } if @first_lat_lon = {}
       @add_point(point.lat, point.lng) for point in points
     mapOptions = {
-      zoom: 13,
+      zoom: 6,
       center: new google.maps.LatLng(@first_lat_lon.lat, @first_lat_lon.lon),
       mapTypeId: google.maps.MapTypeId.SATELLITE
     }
