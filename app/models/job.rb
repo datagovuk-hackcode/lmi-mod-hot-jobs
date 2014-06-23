@@ -21,22 +21,24 @@ class Job < ActiveRecord::Base
           new_job = self.new
           new_job.keyword = keyword
           
-          geo = self.geocode("#{job["location"]["postcode"]}, UK")
+          geo = self.geocode("#{job["location"]["postcode"]}, UK") rescue nil
           
-          new_job.title = job["title"]
-          new_job.lmi_vacancy_id = job["id"]
-          new_job.description = job["summary"]
-          puts
-          puts
-          puts geo
-          puts
-          puts
-          new_job.lng = geo.lng
-          new_job.lat = geo.lat
+          if geo
+            new_job.title = job["title"]
+            new_job.lmi_vacancy_id = job["id"]
+            new_job.description = job["summary"]
+            puts
+            puts
+            puts geo
+            puts
+            puts
+            new_job.lng = geo.lng
+            new_job.lat = geo.lat
 
-          puts "Job saved successfully" if new_job.save
-          puts Job.count
-          sleep 2
+            puts "Job saved successfully" if new_job.save
+            puts Job.count
+            sleep 2
+          end
         else
           puts 'This job already exists in the DB.'
         end
