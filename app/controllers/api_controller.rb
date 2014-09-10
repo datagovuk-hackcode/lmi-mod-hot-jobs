@@ -20,11 +20,7 @@ class ApiController < ApplicationController
     if latlng_params
       @response = HTTParty.get("http://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=#{results_params[:to_lat]},#{results_params[:from_lng]}&destinations=#{results_params[:to_lat]},#{results_params[:to_lng]}")
       @distance = @response["rows"][0]["elements"][0]["distance"]["text"]
-      @response = { distance: @distance }
-    else
-      @response = { error: 'no params' }
     end
-    
   end
 
   def results
