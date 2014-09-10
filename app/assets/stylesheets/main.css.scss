@@ -11,6 +11,14 @@
   padding:4px;
   border-radius:2px;
 }
+#popup{
+  top:20px;
+  left:20px;
+  z-index:1000;
+  background:white;
+  width:400px;
+  height:400px;
+}
 .api{
   *{
     color:#333;
