@@ -2,6 +2,7 @@
   width: 100%;
   height: 100%;
   position: relative;
+  z-index:0;
 }
 
 .results-title {
@@ -12,4 +13,29 @@
   width: 40%;
   padding: 10px;
   background-color: rgba(255,255,255,0.8);
+}
+
+.tooltip{
+  background:pink;
+  border: 1px solid grey;
+  padding:4px;
+  border-radius:2px;
+}
+
+.api{
+
+  *{
+    color:#333;
+  }
+
+  .toggle{
+    position: absolute;
+    top: 20px;
+    left: 80px;
+    z-index: 10;
+    background: #eee;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 2px 4px 4px;
+  }
 }
