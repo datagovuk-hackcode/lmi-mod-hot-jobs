@@ -33,12 +33,11 @@ a:active {
 .main,
 .container > header {
   margin: 0 auto;
-  padding: 2em;
+  padding: 2em 2em 0 2em;
 }
 
 .container > header {
   text-align: center;
-  background: rgba(0,0,0,0.01);
 }
 
 .container > header h1 {
@@ -363,6 +362,11 @@ input:focus::-ms-input-placeholder {
   letter-spacing: 3px;
 }
 
+.wrapgoogle {
+  margin-top: 20px;
+  text-align: center;
+}
+
 .googlebutton{
   background-color: #d14836;
   font-size: 22px;
@@ -374,6 +378,7 @@ input:focus::-ms-input-placeholder {
     height: 60px;
     min-width: 200px;
     white-space: nowrap;
+    margin-bottom: 20px;
 }
 
 .googlebutton:hover{
