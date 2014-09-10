@@ -57,6 +57,12 @@ class ApiController < ApplicationController
     end
   end
 
+  def property_latlng
+    if property_params
+
+    end
+  end
+
   def results
     #this method returns a grouped collection of jobs to the collection
     if results_params[:location_from] && results_params[:location_to]
@@ -90,6 +96,10 @@ class ApiController < ApplicationController
   end
 
   def crime_params
+    params.permit(:lat, :lng)
+  end
+
+  def property_params
     params.permit(:lat, :lng)
   end
 
