@@ -53,7 +53,11 @@ class ApiController < ApplicationController
       @url = crime_url(crime_params)
       puts @url
       @response = HTTParty.get(@url)
-      @types = group_crime(@response)
+      if @response.nil?
+        @types = []
+      else
+        @types = group_crime(@response)
+      end
     end
   end
 
@@ -90,6 +94,10 @@ class ApiController < ApplicationController
   end
 
   def crime_params
+    params.permit(:lat, :lng)
+  end
+
+  def property_params
     params.permit(:lat, :lng)
   end
 

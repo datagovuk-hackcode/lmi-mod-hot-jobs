@@ -25,16 +25,16 @@ class Job < ActiveRecord::Base
           new_job = self.new
           new_job.keyword = keyword
          
-          new_job.title = job["title"]
-          new_job.lmi_vacancy_id = job["id"]
-          new_job.description = job["summary"]
-          new_job.city = job["location"]["city"]
-          new_job.area = job["location"]["area"]
-          new_job.postcode = job["location"]["postcode"]
-          new_job.country = job["location"]["country"]
-          new_job.job_start = job["activedate"]["start"]
-          new_job.job_end = job["activedate"]["end"]
-          new_job.job_last_updated = job["activedate"]["updated"]
+          new_job.title = job["title"] if job["title"]
+          new_job.lmi_vacancy_id = job["id"] if job["id"]
+          new_job.description = job["summary"]  if job["summary"]
+          new_job.city = job["location"]["city"] if job["location"]["city"]
+          new_job.area = job["location"]["area"] if job["location"]["area"]
+          new_job.postcode = job["location"]["postcode"] if job["location"]["postcode"]
+          new_job.country = job["location"]["country"] if job["location"]["country"]
+          new_job.job_start = job["activedate"]["start"] if job["activedate"]["start"]
+          new_job.job_end = job["activedate"]["end"] if job["activedate"]["end"]
+          new_job.job_last_updated = job["activedate"]["updated"] if job["activedate"]["updated"]
 
           puts "Job saved successfully" if new_job.save
           puts Job.count
