@@ -11,12 +11,12 @@
     </h3>
     <script>
       window.location_from = {
-        lat: <%= @location_from_origin.lat %>,
-        lng: <%= @location_from_origin.lng %>
+        lat: <%= @location_from_origin[0] %>,
+        lng: <%= @location_from_origin[1] %>
       }
       window.location_to = {
-        lat: <%= @location_to_origin.lat %>,
-        lng: <%= @location_to_origin.lng %>
+        lat: <%= @location_to_origin[0] %>,
+        lng: <%= @location_to_origin[1] %>
       }
     </script>
   <% end %>
