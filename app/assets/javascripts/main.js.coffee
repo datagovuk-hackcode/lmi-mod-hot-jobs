@@ -63,9 +63,9 @@ class App
 
   get_crime: (lat, lon, title)=>
     $('#popup').hide()
-    html = "<h1>Crime results for #{title}</h1><table>"
+    html = "<h3>Crime results for #{title}</h3><table>"
     $.getJSON @build_crime_url(lat, lon), (data)=>
-      html += "<tr><th>crime type</th><th>count</th></tr>"
+      html += "<tr><th>Type of Crime</th><th>Occurences</th></tr>"
       for type of data.types
         content = true
         html += "<tr><td>#{type}</td><td>#{data.types[type]}</td>"

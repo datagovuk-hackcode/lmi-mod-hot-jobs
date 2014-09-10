@@ -4,6 +4,10 @@ class PropertyValues
   include ActiveModel::Conversion
   include ActiveModel::Validations
 
+  reverse_geocoded_by :lat, :lng
+
+  attribute :lat, Float
+  attribute :lng, Float
   attribute :average_sold_price_7year, Float
   attribute :street, String
   attribute :town, String
@@ -27,9 +31,12 @@ class PropertyValues
   attribute :longitude_max, Float
   attribute :latitude_max, Float
 
-  def initialize(lat, lng)
-    res = Geokit::Geocoders::GoogleGeocoder.reverse_geocode("#{lat}, lng",[{}])
-    res.inspect
+  def initialize(latitude, longitude)
+    #res = reverse_geocoded_by lat, lng
+    lat = latitude
+    lng = longitude
+    fetch_address
+
   end
 
   def get_zoopla_data(postcode_area)
