@@ -24,7 +24,21 @@ class ApiController < ApplicationController
   end
 
   def crime_url(crime_params)
-    "http://data.police.uk/api/crimes-street/all-crime?lat=#{crime_params[:lat].to_i}&lng=#{crime_params[:lng].to_i}&date=2014-01"
+    poly = ""
+    
+    poly += "#{crime_params[:lat].to_f - 0.05},"
+    poly += "#{crime_params[:lng].to_f - 0.05}:"
+
+    poly += "#{crime_params[:lat].to_f - 0.05},"
+    poly += "#{crime_params[:lng].to_f + 0.05}:"
+
+    poly += "#{crime_params[:lat].to_f + 0.05},"
+    poly += "#{crime_params[:lng].to_f + 0.05}:"
+
+    poly += "#{crime_params[:lat].to_f + 0.05},"
+    poly += "#{crime_params[:lng].to_f - 0.05}"
+
+    "http://data.police.uk/api/crimes-street/all-crime?poly=#{poly}"
   end
 
   def group_crime response
@@ -37,6 +51,7 @@ class ApiController < ApplicationController
   def crime_latlng
     if crime_params
       @url = crime_url(crime_params)
+      puts @url
       @response = HTTParty.get(@url)
       @types = group_crime(@response)
     end
