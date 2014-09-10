@@ -1,10 +1,9 @@
 <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAByI8rW3Qm5F3zv1gXHjnDV8PRnkUn2HA&libraries=visualization"></script>
 <% if @results.size > 0 %>
-  <h1>
+  <h1 class="results-title">
     Where are <%= @keyword %> jobs most needed at the moment?
-  </h1>
-
+  </h1> 
   <% if @distance %>
     <h3>
       Approx distance to your selected living area: <%= @distance %><br>
@@ -12,9 +11,9 @@
     </h3>
   <% end %>
   <script>
-  window.results = <%= raw @results.to_json %>
+    window.results = <%= raw @results.to_json %>
   </script>
-  <p>The map below shows the density for job vancancies listed for <%= @keyword %>.</p>
+  
   <div id="map-canvas"></div>
 <% else %>
   <h1>

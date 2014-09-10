@@ -1,0 +1,1 @@
+ENV['ZOOPLA_API_KEY'] = 'v8j7apw29phx8yjbf5n7det6'

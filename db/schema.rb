@@ -19,11 +19,17 @@ ActiveRecord::Schema.define(version: 20140623101442) do
   create_table "jobs", force: true do |t|
     t.float    "lat"
     t.float    "lng"
-    t.text     "location"
+    t.text     "city"
+    t.text     "area"
+    t.text     "postcode"
+    t.text     "country"
     t.text     "title"
     t.integer  "lmi_vacancy_id"
     t.text     "description"
     t.text     "keyword"
+    t.datetime "job_start"
+    t.datetime "job_end"
+    t.datetime "job_last_updated"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

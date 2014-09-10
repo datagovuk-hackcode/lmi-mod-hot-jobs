@@ -9,5 +9,12 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
  */
+
+$font-family-sans-serif: 'Source Sans Pro', sans-serif;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "lmi_geo_data_global";
+@import "lmi_geo_data_results";
+@import "search_page";

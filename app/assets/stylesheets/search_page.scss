@@ -1,0 +1,34 @@
+html, body {
+  height: 100%;
+}
+
+body.search-page {
+  background-image: image-url("cover_img_girl_looking_left.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.main-cta {
+  font-weight: 200;
+  font-size: $font-size-h1+20;
+  color: white;
+  margin-top: 200px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 500px;
+}
+
+.search-form {
+  text-align: center;
+  font-size: $font-size-h3;
+  color: white;
+  font-weight: 200;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 500px;
+
+  input {
+    color: black;
+  }
+}

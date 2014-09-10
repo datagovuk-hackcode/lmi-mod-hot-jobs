@@ -1,4 +1,14 @@
-<form id="nl-form" class="nl-form" action="/results">
+<% content_for :body_class do %>search-page<% end %>
+<div class="search-page text-center">
+
+  <h1 class="main-cta">
+    Find out where you're going.
+  </h1>
+
+</div>
+
+
+<form action="/results" class="search-form">
   I live in
   <select name="location_from">
     <option value="Ipswich">Ipswich</option>
@@ -16,8 +26,6 @@
     <option value="Cranbrook">Cranbrook</option>
   </select> and I'm interested in <input type="text" value="" name="keyword" placeholder="..." data-subline="For example, <em>Football</em> or <em>Engineering.</em>"/>
   <div class="wrapgoogle">
-    <button class="googlebutton">Search</button>
-    <button class="googlebutton">I'm feeling lucky!</button>
+    <button class="googlebutton btn btn-default">Search</button>
   </div>
-  <div class="nl-overlay"></div>
 </form>

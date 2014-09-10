@@ -27,7 +27,11 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem "geokit-rails"
+#gem 'geokit-rails'
+#gem 'geokit'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'geocoder'
+gem 'virtus'
 gem 'pg'
 gem 'httparty'
 gem 'd3js-rails', '~> 3.1.6'
