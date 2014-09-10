@@ -63,9 +63,10 @@ class App
       html = "<table>"
       html += "<tr><th>crime type</th><th>count</th></tr>"
       for type of data.types
+        content = true
         html += "<tr><td>#{type}</td><td>#{data.types[type]}</td>"
       html += "</table>"
-      $('#popup').html(html).show()
+      $('#popup').html(html).show() if content
 
   get_crime: (lat, lon)=>
     @build_crime_url lat, lon
