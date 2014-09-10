@@ -16,18 +16,52 @@ class App
     console.log 'we are in constructor'
     @first_lat_lon = {}
     @map_points = []
-    for key, points of window.results
-      @first_lat_lon = { lat: points[0].lat, lon: points[0].lng  } if @first_lat_lon = {}
-      @add_point(point.lat, point.lng) for point in points
+    @markers = []
     mapOptions = {
       zoom: 6,
-      center: new google.maps.LatLng(@first_lat_lon.lat, @first_lat_lon.lon),
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       styles: window.map_styles
     }
     @map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions)
+    for key, points of window.results
+      @first_lat_lon = { lat: points[0].lat, lon: points[0].lng  } if @first_lat_lon = {}
+      for point in points
+        @add_point(point.lat, point.lng)
+        @add_marker(point.lat, point.lng, point.title)
+    @map.setCenter new google.maps.LatLng @first_lat_lon.lat, @first_lat_lon.lon
     @initialize()
+    @draw_line()
+    @hidden = true
+    for marker in @markers
+      marker.setVisible false
+    $('.toggle').click (event)=>
+      event.preventDefault()
+      if @hidden
+        for marker in @markers
+          marker.setVisible true
+        @hidden = false
+      else
+        for marker in @markers
+          marker.setVisible false
+        @hidden = true
+
+
+  add_marker: (lat, lon, title)=>
+    @markers.push new google.maps.Marker({
+      map: @map
+      position: new google.maps.LatLng(lat, lon) 
+      title:title
+      icon: 'https://dl.dropboxusercontent.com/u/29482823/lmi_pin.png'
+    })
+
+  draw_line: =>
+    if window.location_to
+      lines = [
+        new google.maps.LatLng(location_to.lat, location_to.lng),
+        new google.maps.LatLng(location_from.lat, location_from.lng)
+      ]
+      poly = new google.maps.Polyline({ map: @map, path: lines, strokeColor: '#4986E7' })
 
   add_point: (lat, lon)=>
     @map_points.push new google.maps.LatLng(lat, lon)

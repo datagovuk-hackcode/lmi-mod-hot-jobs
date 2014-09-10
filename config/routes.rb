@@ -1,6 +1,10 @@
 LmiGeoData::Application.routes.draw do
   root "main#search"
   get "/results" => "main#results"
+  get "api/map" => "api#map"
+  get "api/distance" => "api#distances_by_name"
+  get "api/distance_ll" => "api#distances_by_latlng"
+  get "api/crime_ll" => "api#crime_latlng"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
