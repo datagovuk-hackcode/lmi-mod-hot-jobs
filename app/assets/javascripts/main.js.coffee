@@ -27,7 +27,7 @@ class App
       @first_lat_lon = { lat: points[0].lat, lon: points[0].lng  } if @first_lat_lon = {}
       for point in points
         @add_point(point.lat, point.lng)
-        @add_marker(point.lat, point.lng, point.title)
+        @add_marker(point.lat, point.lng, point.title, point.city)
     @map.setCenter new google.maps.LatLng @first_lat_lon.lat, @first_lat_lon.lon
     @initialize()
     @draw_line()
@@ -46,7 +46,7 @@ class App
         @hidden = true
 
 
-  add_marker: (lat, lon, title)=>
+  add_marker: (lat, lon, title, location)=>
     m = new google.maps.Marker({
       map: @map
       position: new google.maps.LatLng(lat, lon) 
@@ -54,22 +54,23 @@ class App
       icon: 'https://dl.dropboxusercontent.com/u/29482823/lmi_pin.png'
     })
     google.maps.event.addListener m, 'click', =>
-      @get_crime(lat, lon)
+      @get_crime(lat, lon, location)
     @markers.push m
 
   build_crime_url: (lat, lon)=>
-    $.getJSON "/api/crime_ll.json?lat=#{lat}&lng=#{lon}", (data)=>
-      $('#popup').hide()
-      html = "<table>"
+     "/api/crime_ll.json?lat=#{lat}&lng=#{lon}"
+     
+
+  get_crime: (lat, lon, title)=>
+    $('#popup').hide()
+    html = "<h1>Crime results for #{title}</h1><table>"
+    $.getJSON @build_crime_url(lat, lon), (data)=>
       html += "<tr><th>crime type</th><th>count</th></tr>"
       for type of data.types
         content = true
         html += "<tr><td>#{type}</td><td>#{data.types[type]}</td>"
       html += "</table>"
       $('#popup').html(html).show() if content
-
-  get_crime: (lat, lon)=>
-    @build_crime_url lat, lon
 
   draw_line: =>
     if window.location_to
