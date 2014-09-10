@@ -10,7 +10,6 @@ window.map_styles =[
   }
 ]
 
-
 class App
   constructor: ->
     console.log 'we are in constructor'
@@ -48,12 +47,28 @@ class App
 
 
   add_marker: (lat, lon, title)=>
-    @markers.push new google.maps.Marker({
+    m = new google.maps.Marker({
       map: @map
       position: new google.maps.LatLng(lat, lon) 
       title:title
       icon: 'https://dl.dropboxusercontent.com/u/29482823/lmi_pin.png'
     })
+    google.maps.event.addListener m, 'click', =>
+      @get_crime(lat, lon)
+    @markers.push m
+
+  build_crime_url: (lat, lon)=>
+    $.getJSON "/api/crime_ll.json?lat=#{lat}&lng=#{lon}", (data)=>
+      $('#popup').hide()
+      html = "<table>"
+      html += "<tr><th>crime type</th><th>count</th></tr>"
+      for type of data.types
+        html += "<tr><td>#{type}</td><td>#{data.types[type]}</td>"
+      html += "</table>"
+      $('#popup').html(html).show()
+
+  get_crime: (lat, lon)=>
+    @build_crime_url lat, lon
 
   draw_line: =>
     if window.location_to
