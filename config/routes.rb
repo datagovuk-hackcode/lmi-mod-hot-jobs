@@ -1,6 +1,7 @@
 LmiGeoData::Application.routes.draw do
   root "main#search"
   get "/results" => "main#results"
+  get "api/results" => "api#results"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -25,13 +25,14 @@
   window.results = <%= raw @results.to_json %>
   </script>
   <p>The map below shows the density for job vancancies listed for <%= @keyword %>.</p>
+  <p><a href="#" class="toggle">Toggle markers</a></p>
   <div id="map-canvas"></div>
 <% else %>
   <h1>
     Sorry, there aren't any vacancies listed in that area. 
   </h1>
   <h2>
-    <% random_keyword = ["football", "catering", "teaching", "music", "catering", "chef"].sample %>
+    <% random_keyword = ["football", "catering", "teaching", "catering", "chef"].sample %>
     Have you thought of a career in <a href="/results?keyword=<%= random_keyword%>"><%= random_keyword%>?</a>
   </h2>
 <% end %>
