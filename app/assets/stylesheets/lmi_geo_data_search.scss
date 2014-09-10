@@ -26,9 +26,11 @@ body.search-page {
   font-weight: 200;
   margin-right: auto;
   margin-left: auto;
-  max-width: 500px;
+  max-width: 800px;
 
   input {
     color: black;
+    display: inline-block;
+    width: 160px;
   }
 }

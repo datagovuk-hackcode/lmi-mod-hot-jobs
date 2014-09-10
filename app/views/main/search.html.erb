@@ -8,23 +8,24 @@
 </div>
 
 
-<form action="/results" class="search-form">
+<form action="/results" class="search-form form-inline">
   I live in
-  <select name="location_from">
-    <option value="Ipswich">Ipswich</option>
+  <input name="location_from" class="form-control" placeholder="Hull">
+    <!--<option value="Ipswich">Ipswich</option>
     <option value="Slough">Slough</option>
     <option value="High-Wycombe">High-Wycombe</option>
     <option value="Coventry">Coventry</option>
     <option value="Nuneaton">Nuneaton</option>
-  </select>.
+  </select>-->.
   I'd like to work in
-  <select name="location_to">
+  <input name="location_to" class="form-control" placeholder="London">
+  <!-- <select name="location_to">
     <option value="Reading">Reading</option>
     <option value="London">London</option>
     <option value="Bristol">Bristol</option>
     <option value="Sevenoaks">Sevenoaks</option>
     <option value="Cranbrook">Cranbrook</option>
-  </select> and I'm interested in <input type="text" value="" name="keyword" placeholder="..." data-subline="For example, <em>Football</em> or <em>Engineering.</em>"/>
+  </select> --> and I'm interested in <input type="text" value="" name="keyword" placeholder="catering" class="form-control"/>
   <div class="wrapgoogle">
     <button class="googlebutton btn btn-default">Search</button>
   </div>
