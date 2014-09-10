@@ -6,13 +6,44 @@
 }
 
 .results-title {
+  font-size: 16px;
   position: absolute;
-  top: 20px;
-  left: 80px;
+  display: inline-block;
+  top: 60px;
+  left: 60px;
   z-index: 1000000;
-  width: 40%;
-  padding: 10px;
+  max-width: 60%;
+  padding: 0;
   background-color: rgba(255,255,255,0.8);
+  p { padding: 7px 7px 2px; }
+}
+
+a.toggle {
+  display: block;
+  font-size: 12px;
+  background-color: #FF0088;
+  padding: 3px 10px;
+  color: white;
+  
+
+    &:hover {
+      color: white;
+      text-decoration: underline;
+    }
+  
+}
+
+.journey-info {
+  padding: 10px 20px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255,255,255,.95);
+
+  .summary {
+    font-size: 12px;
+  }
 }
 
 .tooltip{
@@ -21,16 +52,13 @@
   padding:4px;
   border-radius:2px;
 }
+
 #popup{
-  position:absolute;
+
   display:none;
-  top:20px;
-  left:20px;
-  z-index:1000;
-  background:white;
-  width:400px;
-  height:400px;
+  padding: 20px;
 }
+
 .api{
   *{
     color:#333;
@@ -51,5 +79,33 @@
     padding: 8px;
     border-radius: 4px;
     box-shadow: 2px 4px 4px;
+  }
+}
+
+
+@media (min-width: 400px) {
+
+  .results-title {
+    left: 80px;
+  }
+}
+
+
+@media (min-width: 600px) {
+
+  .results-title {
+    font-size: 24px;
+  }
+
+  .journey-info .summary {
+    font-size: 24px;
+  }
+
+}
+
+@media (min-width: 600px) {
+  .results-title {
+    top: 60px;
+    font-size: 28px;
   }
 }

@@ -2,10 +2,29 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAByI8rW3Qm5F3zv1gXHjnDV8PRnkUn2HA&libraries=visualization"></script>
 <% if @results.size > 0 %>
   <h1 class="results-title">
-    Where are <%= @keyword %> jobs most needed at the moment?
+    <p>Where are <%= @keyword %> jobs most needed at the moment?</p>
+    <a href="#" class="toggle">View the jobs</a>
+    <div id="popup"></div>
   </h1> 
-  <% if @distance %>
-    <h3>
+  <script>
+    window.results = <%= raw @results.to_json %>
+  </script>
+  
+  <div id="map-canvas"></div>
+<% else %>
+  <h1>
+    Sorry, there aren't any vacancies listed in that area. 
+  </h1>
+  <h2>
+    <% random_keyword = ["football", "catering", "teaching", "catering", "chef"].sample %>
+    Have you thought of a career in <a href="/results?keyword=<%= random_keyword%>"><%= random_keyword%>?</a>
+  </h2>
+<% end %>
+
+
+<% if @distance %>
+  <div class="journey-info">
+    <h3 class="summary">
       Your journey to work would be approximately <%= @distance %><br>
       If you drove that distance it would be roughly <%= number_to_currency( ((@distance[0..-4].to_f) * 0.24), unit: '£') %> to drive there every day.
     </h3>
@@ -19,20 +38,7 @@
         lng: <%= @location_to_origin[1] %>
       }
     </script>
-  <% end %>
-  <script>
-    window.results = <%= raw @results.to_json %>
-  </script>
-  <p>The map below shows the density for job vancancies listed for <%= @keyword %>.</p>
-  <p><a href="#" class="toggle">Toggle markers</a></p>
-  <div id="map-canvas"></div>
-<% else %>
-  <h1>
-    Sorry, there aren't any vacancies listed in that area. 
-  </h1>
-  <h2>
-    <% random_keyword = ["football", "catering", "teaching", "catering", "chef"].sample %>
-    Have you thought of a career in <a href="/results?keyword=<%= random_keyword%>"><%= random_keyword%>?</a>
-  </h2>
+  </div>
 <% end %>
-<div id="popup"></div>
+
+

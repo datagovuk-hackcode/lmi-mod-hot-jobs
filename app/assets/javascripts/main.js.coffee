@@ -66,7 +66,7 @@ class App
         content = true
         html += "<tr><td>#{type}</td><td>#{data.types[type]}</td>"
       html += "</table>"
-      $('#popup').html(html).show() if content
+      $('#popup').html(html).slideDown() if content
 
   get_crime: (lat, lon)=>
     @build_crime_url lat, lon
