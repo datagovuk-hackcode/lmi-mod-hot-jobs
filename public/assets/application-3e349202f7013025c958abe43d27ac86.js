@@ -12974,7 +12974,7 @@ return jQuery;
           var html, type;
           $('#popjsdhup').hide();
           html = "<table>";
-          html += "<tr><th>crime type</th><th>count</th></tr>";
+          html += "<tr><th>Type of Crime</th><th>Occurences</th></tr>";
           for (type in data.types) {
             html += "<tr><td>" + type + "</td><td>" + data.types[type] + "</td>";
           }

@@ -35,7 +35,7 @@ class PropertyValues
   def get_zoopla_data(postcode_area)
     # get a postcode area from the loaction value
     # make a call to Zoopla for the postcode area
-    response = HTTParty.get("http://api.lmiforall.org.uk/api/v1/vacancies/search?keywords=#{postcode_area}&api_key#{ENV['ZOOPLA_API_KEY']}")
+    response = HTTParty.get("http://api.zoopla.co.uk/api/v1/average_area_sold_price.js?area=#{postcode_area}&api_key#{ENV['ZOOPLA_API_KEY']}")
 
     puts response.inspect
     # assign values to properties
