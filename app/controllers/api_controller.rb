@@ -24,12 +24,15 @@ class ApiController < ApplicationController
         @response = HTTParty.get("http://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=#{@location_from_origin.lat},#{@location_from_origin.lng}&destinations=#{@location_to_origin.lat},#{@location_to_origin.lng}")
         @distance = @response["rows"][0]["elements"][0]["distance"]["text"]
         @cost = number_to_currency( ((@distance[0..-4].to_f) * 0.24), unit: '£')
+        response = { distance: @distance, cost: @cost }
+      else
+        response = { error: 'broked' }
       end
-      # respond_to do |format|
-      #   format.json  { render :json, {distance: @distance, cost: @cost } }
-      # end
     else
-
+      response = { error: 'no params' }
+    end
+    respond_to do |format|
+      format.json  { render :json, response }
     end
   end
 
