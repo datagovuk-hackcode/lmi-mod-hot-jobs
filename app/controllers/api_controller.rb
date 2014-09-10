@@ -18,22 +18,13 @@ class ApiController < ApplicationController
 
   def distances_by_latlng
     if latlng_params
-      @location_from_origin = [results_params[:to_lat], results_params[:to_lng]]
-      @location_to_origin = [results_params[:from_lat], results_params[:from_lng]]
-      if @location_from_origin && @location_to_origin
-        @response = HTTParty.get("http://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=#{@location_from_origin.lat},#{@location_from_origin.lng}&destinations=#{@location_to_origin.lat},#{@location_to_origin.lng}")
-        @distance = @response["rows"][0]["elements"][0]["distance"]["text"]
-        @cost = number_to_currency( ((@distance[0..-4].to_f) * 0.24), unit: '£')
-        response = { distance: @distance, cost: @cost }
-      else
-        response = { error: 'broked' }
-      end
+      @response = HTTParty.get("http://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=#{results_params[:to_lat]},#{results_params[:from_lng]}&destinations=#{results_params[:to_lat]},#{results_params[:to_lng]}")
+      @distance = @response["rows"][0]["elements"][0]["distance"]["text"]
+      @response = { distance: @distance }
     else
-      response = { error: 'no params' }
+      @response = { error: 'no params' }
     end
-    respond_to do |format|
-      format.json  { render :json, response }
-    end
+    
   end
 
   def results
@@ -65,7 +56,7 @@ class ApiController < ApplicationController
   private
   
   def results_params
-    params.permit(:keyword, :location_from, :location_to)
+    params.permit(:keyword, :location_from, :location_to, :from_lat, :from_lng, :to_lat, :to_lng)
   end
 
 end

@@ -30,6 +30,11 @@ gem 'httparty'
 gem 'd3js-rails', '~> 3.1.6'
 
 gem 'rails_12factor'
+
+group :development do
+  gem 'pry'
+end
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
