@@ -23,6 +23,25 @@ class ApiController < ApplicationController
     end
   end
 
+  def crime_url(crime_params)
+    "http://data.police.uk/api/crimes-street/all-crime?lat=#{crime_params[:lat].to_i}&lng=#{crime_params[:lng].to_i}&date=2014-01"
+  end
+
+  def group_crime response
+    hash = {}
+    grouped = response.group_by { |thing| thing["category"] }
+    grouped.each { |group| hash[group[0]] = group[1].count }
+    hash
+  end
+
+  def crime_latlng
+    if crime_params
+      @url = crime_url(crime_params)
+      @response = HTTParty.get(@url)
+      @types = group_crime(@response)
+    end
+  end
+
   def results
     #this method returns a grouped collection of jobs to the collection
     if results_params[:location_from] && results_params[:location_to]
@@ -53,6 +72,10 @@ class ApiController < ApplicationController
   
   def results_params
     params.permit(:keyword, :location_from, :location_to, :from_lat, :from_lng, :to_lat, :to_lng)
+  end
+
+  def crime_params
+    params.permit(:lat, :lng)
   end
 
 end
